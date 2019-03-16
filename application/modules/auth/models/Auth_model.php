@@ -1,6 +1,17 @@
-<?php if (!defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+<?php
 
-class auth extends CI_Model
-{}
+class Auth_model extends CI_Model 
+{
+	public function check_login()
+	{
+		if($this->session->userdata('login_status'))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+}
+?>
