@@ -31,8 +31,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 application/.htaccess
 application/config/config.php
-<<<<<<< HEAD
 application/config/database.php
-=======
-application/config/database.php
->>>>>>> 1306f49b5d0f93d191e3ca61100fe9ce268ae5ff

@@ -297,7 +297,11 @@ class MX_Loader extends CI_Loader
 			$view = $_view;
 		}
 
+<<<<<<< HEAD
 		// return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+=======
+		 //return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+>>>>>>> 54bdc86f0afa962c7455fceac68348db07d7634b
 		if (method_exists($this, '_ci_object_to_array'))
 		{
 				return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
