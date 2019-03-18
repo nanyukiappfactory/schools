@@ -15,9 +15,20 @@ class Admin extends MX_Controller
 
     public function index()
     {     
+        $this->session->set_flashdata('success', 'Welcome back '); 
+        $V_data['title'] = 'Admin Login';
+        $data = array
+        (
+           "title" => "Admin Login",
+           "content" => $this->load->view("admin/all_schools", $V_data, true),
+           "login" => true,
+       );
+       $this->load->view("auth/layouts/login_layout", $data);
         
-        $this->session->set_flashdata('success', 'Welcome back '.$first_name.'');      
-         redirect('admin/schools');
+        
+
+            
+        // $this->load->view('admin/all_schools');
     }
 }
 
