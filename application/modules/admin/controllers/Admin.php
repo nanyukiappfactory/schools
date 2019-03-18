@@ -12,10 +12,9 @@ class Admin extends MX_Controller
             redirect('admin/login');
         }
     }
-
     public function index()
     {     
-        $this->session->set_flashdata('success', 'Welcome back '); 
+        // $this->session->set_flashdata('success', 'Welcome back '.$first_name.''); 
         $V_data['title'] = 'Admin Login';
         $data = array
         (
@@ -23,12 +22,7 @@ class Admin extends MX_Controller
            "content" => $this->load->view("admin/all_schools", $V_data, true),
            "login" => true,
        );
-       $this->load->view("auth/layouts/login_layout", $data);
-        
-        
-
-            
-        // $this->load->view('admin/all_schools');
+       $this->load->view("admin/layouts/layout", $data);
     }
 }
 
