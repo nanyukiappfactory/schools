@@ -1,11 +1,11 @@
-<!Doctype html>
-<html lang="en">
-
  <?php $this->load->view('schools/layouts/header');?>
 <body>
     <div class="container-fluid">
         <div class="row">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
+            <?php $this->load->view('admin/layouts/navigation');?>	
+	
+		     <?php $this->load->view('admin/layouts/sidenav');?> 
                 <?php
                 $error = $this->session->flashdata('error');
                 $success = $this->session->flashdata('success');
@@ -21,6 +21,8 @@
                 }
 
                 echo $content;?>
+                <?php $this->load->view('admin/layouts/footer');?>
+
             </main>
         </div>
     </div>

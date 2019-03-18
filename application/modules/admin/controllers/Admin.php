@@ -23,7 +23,7 @@ class Admin extends MX_Controller
            "content" => $this->load->view("admin/all_schools", $V_data, true),
            "login" => true,
        );
-       $this->load->view("auth/layouts/login_layout", $data);
+       $this->load->view("admin/layouts/layout", $data);
         
         
 
