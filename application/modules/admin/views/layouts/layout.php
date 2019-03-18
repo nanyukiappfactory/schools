@@ -1,4 +1,4 @@
- <?php $this->load->view('schools/layouts/header');?>
+ <?php $this->load->view('admin/layouts/header');?>
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -26,7 +26,7 @@
             </main>
         </div>
     </div>
-        <?php $this->load->view('schools/layouts/footer');?>
+        <?php $this->load->view('admin/layouts/footer');?>
 </body>
 
 </html>
