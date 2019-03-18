@@ -19,7 +19,7 @@ class Admin extends MX_Controller
         $data = array
         (
            "title" => "Admin Login",
-           "content" => $this->load->view("admin/all_schools", $V_data, true),
+           "content" => $this->load->view("admin/school/all_schools", $V_data, true),
            "login" => true,
        );
        $this->load->view("admin/layouts/layout", $data);
