@@ -66,6 +66,3 @@ $route['admin/schools'] = 'admin/admin/index';
 $route['school/all-schools'] = 'admin/school/index';
 
 
-$route['default_controller'] = 'admin';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;

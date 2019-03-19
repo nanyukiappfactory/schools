@@ -23,7 +23,7 @@ class Auth extends MX_Controller
                     if ($this->auth_model->validate_user($user_name, $user_password) == true) 
                     {
                         $this->session->set_flashdata('success', 'Welcome back '.$first_name.'');
-                        redirect('admin/schools');
+                        redirect('school/schools');
                     } else 
                     {    
             //3. Condition of validation rules failed
