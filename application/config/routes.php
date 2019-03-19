@@ -66,4 +66,3 @@ $route['school/schools'] = 'admin/admin/index';
 $route['school/all-schools'] = 'admin/school/index';
 
 
-

@@ -15,7 +15,6 @@ class Admin extends MX_Controller
     public function index()
     {     
         $newdata = $this->auth_model->validate_user(null, null);
-        //var_dump($newdata);die();
        
         $this->session->set_flashdata('success', 'Welcome back  '. $first_name .' '); 
         redirect('school/all-schools');
@@ -28,9 +27,6 @@ class Admin extends MX_Controller
         $this->session->sess_destroy();
         redirect("admin/login");
    }
-       
-        // $this->session->sess_destroy();
-        // redirect("admin/login");
     
 }
 ?>
