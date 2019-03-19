@@ -52,14 +52,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Auth
  */
-
-$route['login'] = 'auth/auth/index';
 $route['admin/login'] = 'auth/auth/index';
+
 /**
  * Admin
  */
-$route['admin'] = 'admin';
+
 $route['admin/schools'] = 'admin/admin/index';
-$route['schools/all_schools'] = 'admin/schools/index';
+$route['admin/all-schools'] = 'admin/schools/index';
+
+$route['default_controller'] = 'auth/auth/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
