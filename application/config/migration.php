@@ -9,8 +9,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | You should enable migrations whenever you intend to do a schema migration
 | and disable it back when you're done.
 |
- */
-$config['migration_enabled'] = true;
+*/
+$config['migration_enabled'] =TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +55,9 @@ $config['migration_table'] = 'migrations';
 | set to). This way you do not have to call migrations anywhere else
 | in your code to have the latest migration.
 |
- */
-$config['migration_auto_latest'] = true;
+*/
+$config['migration_auto_latest'] = TRUE;
+
 /*
 |--------------------------------------------------------------------------
 | Migrations version
@@ -66,10 +67,8 @@ $config['migration_auto_latest'] = true;
 | If you run $this->migration->current() this is the version that schema will
 | be upgraded / downgraded to.
 |
- */
-
-
-$config['migration_version'] = 20190318165350;
+*/
+$config['migration_version'] = 20190319083623;
 
 /*
 |--------------------------------------------------------------------------
