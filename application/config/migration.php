@@ -1,6 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+defined('BASEPATH') or exit('No direct script access allowed');
 /*
 |--------------------------------------------------------------------------
 | Enable/Disable Migrations
@@ -10,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | You should enable migrations whenever you intend to do a schema migration
 | and disable it back when you're done.
 |
-*/
-$config['migration_enabled'] = FALSE;
+ */
+$config['migration_enabled'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +27,8 @@ $config['migration_enabled'] = FALSE;
 | Note: If this configuration value is missing the Migration library
 |       defaults to 'sequential' for backward compatibility with CI2.
 |
-*/
+ */
+
 $config['migration_type'] = 'timestamp';
 
 /*
@@ -42,9 +42,8 @@ $config['migration_type'] = 'timestamp';
 | table to the $config['migration_version'] if they are not the same it
 | will migrate up. This must be set.
 |
-*/
+ */
 $config['migration_table'] = 'migrations';
-
 /*
 |--------------------------------------------------------------------------
 | Auto Migrate To Latest
@@ -56,9 +55,8 @@ $config['migration_table'] = 'migrations';
 | set to). This way you do not have to call migrations anywhere else
 | in your code to have the latest migration.
 |
-*/
-$config['migration_auto_latest'] = FALSE;
-
+ */
+$config['migration_auto_latest'] = true;
 /*
 |--------------------------------------------------------------------------
 | Migrations version
@@ -68,17 +66,19 @@ $config['migration_auto_latest'] = FALSE;
 | If you run $this->migration->current() this is the version that schema will
 | be upgraded / downgraded to.
 |
-*/
-$config['migration_version'] = 0;
+ */
+
+
+$config['migration_version'] = 20190318165350;
 
 /*
 |--------------------------------------------------------------------------
 | Migrations Path
 |--------------------------------------------------------------------------
-|
+
 | Path to your migrations folder.
 | Typically, it will be within your application path.
 | Also, writing permission is required within the migrations path.
 |
-*/
-$config['migration_path'] = APPPATH.'migrations/';
+ */
+$config['migration_path'] = APPPATH . 'migrations/';

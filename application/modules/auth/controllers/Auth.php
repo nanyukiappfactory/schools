@@ -27,9 +27,15 @@ class Auth extends MX_Controller
                         $this->session->set_flashdata('success', 'Welcome back '.$first_name.'');
                         redirect('admin/schools');
                     } else 
-                    {   
+                    {    
             //3. Condition of validation rules failed
-                        $this->session->set_flashdata('error', 'Incorrect details, please try again');
+                    $this->session->set_flashdata("form_inputs", array(
+                        'user_name' =>$this->input->post('user_name'),
+                        'user_password' =>$this->input->post('user_password')
+
+
+                    ));
+                    $this->session->set_flashdata('error', 'Incorrect details, please try again');
                     }
                 }
                  $V_data['title'] = 'Admin Login';

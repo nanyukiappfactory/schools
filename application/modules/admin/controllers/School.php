@@ -1,7 +1,7 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends MX_Controller
+class School extends MX_Controller
 {
     function __construct()
     {
@@ -15,7 +15,7 @@ class Admin extends MX_Controller
         $data = array
             (
             "title" => "Admin Login",
-            "content" => $this->load->view("admin/all_schools", $V_data, true),
+            "content" => $this->load->view("admin/all-schools", $V_data, true),
             "login" => true,
         );
         $this->load->view("auth/layouts/login_layout", $data);
