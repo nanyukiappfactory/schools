@@ -3,7 +3,7 @@ if (!defined('BASEPATH')) { exit('No direct access script allowed'); }
 
 class Auth_model extends CI_Model 
 {
-	public function validate_user($user_name, $user_password, $first_name)
+	public function validate_user($user_name, $user_password)
 	{
 		if($user_name == "admin" && $user_password == md5(123456))
 		{
