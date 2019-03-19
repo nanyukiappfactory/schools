@@ -59,9 +59,9 @@ $route['admin/login'] = 'auth/auth/index';
  */
 
 $route['admin/schools'] = 'admin/admin/index';
-$route['admin/all-schools'] = 'admin/school/index';
+$route['school/all-schools'] = 'admin/school/index';
 
 
-$route['default_controller'] = 'auth/auth/index';
+$route['default_controller'] = 'admin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
