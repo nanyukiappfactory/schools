@@ -10,7 +10,7 @@ class Auth_model extends CI_Model
 			$newdata = array(
 				'user_name' => '$user_name',
 				'login_status' => true,
-				'$first_name' => 'Patricia',
+				'first_name' => 'Samuel',
 			);
 			$this->session->set_userdata('login_status', $newdata);
 			return TRUE;
