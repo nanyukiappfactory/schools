@@ -3,7 +3,9 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
+    <a class="btn btn-outline-danger btn-sm" href="<?php echo base_url(); ?>admin/logout">
+    <i class="fas fa-sign-out-alt"></i>Log Out</a>
+      <!-- <a class="nav-link" href="#">Sign out</a> -->
     </li>
   </ul>
 </nav>
