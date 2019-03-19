@@ -7,12 +7,10 @@ class Auth extends MX_Controller
         parent::__construct();
         $this->load->model('auth_model');
     }
-    /*
-     *    Login a admin
-     */
+    //Admin Login
     public function index()
     {
-        //form validation 
+        //1. form validation 
         $this->form_validation->set_rules('user_name', 'Username', 'required');
         $this->form_validation->set_rules('user_password', 'Password', 'required');
             
@@ -32,8 +30,6 @@ class Auth extends MX_Controller
                     $this->session->set_flashdata("form_inputs", array(
                         'user_name' =>$this->input->post('user_name'),
                         'user_password' =>$this->input->post('user_password')
-
-
                     ));
                     $this->session->set_flashdata('error', 'Incorrect details, please try again');
                     }

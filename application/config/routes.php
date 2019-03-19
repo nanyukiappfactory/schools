@@ -61,8 +61,7 @@ $route['admin/login'] = 'auth/auth/index';
  * Admin
  */
 
-$route['admin/schools'] = 'admin/admin/index';
-$route['schools/all-schools'] = 'admin/schools/index';
-$route['admin/logout'] = 'admin/admin/admin_logout';
+$route['school/schools'] = 'admin/admin/index';
+$route['school/all-schools'] = 'admin/school/index';
 
 
