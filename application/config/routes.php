@@ -56,12 +56,12 @@ $route['translate_uri_dashes'] = FALSE;
  * Auth
  */
 $route['admin/login'] = 'auth/auth/index';
+$route['admin/logout'] = 'admin/admin/admin_logout';
 
 /**
  * Admin
  */
 
-<<<<<<< HEAD
 $route['admin/schools'] = 'admin/admin/index';
 $route['school/all-schools'] = 'admin/school/index';
 
@@ -69,9 +69,3 @@ $route['school/all-schools'] = 'admin/school/index';
 $route['default_controller'] = 'admin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-=======
-$route['school/schools'] = 'admin/admin/index';
-$route['school/all-schools'] = 'admin/school/index';
-
-
->>>>>>> 077336d04f895893e9397a7189be01796e086f00
