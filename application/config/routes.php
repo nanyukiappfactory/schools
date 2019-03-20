@@ -64,5 +64,6 @@ $route['admin/logout'] = 'admin/admin/admin_logout';
 
 $route['school/schools'] = 'admin/admin/index';
 $route['school/all-schools'] = 'admin/school/index';
+$route['school/add-school'] = 'admin/school/index';
 
 

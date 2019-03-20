@@ -21,7 +21,7 @@ $this->load->view('admin/layouts/header');
 	
             <?php $this->load->view('admin/layouts/sidenav');?> 
              
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
+            <main role="main" style="margin-top:400px;" class="col-md-9 ml-sm-auto col-lg-10 mb-10">
 
                 <?php
                     echo $alert;

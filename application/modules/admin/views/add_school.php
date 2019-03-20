@@ -1,13 +1,5 @@
-<div class="modal-content">
-    <div class="modal">
-        <h5 class="modal-title" id="createDonationLabel">Enter New School</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
 
-    <div class="modal-body">
-        <?php echo form_open_multipart(base_url() . 'administration/schools'); ?>
+    <?php echo form_open_multipart(base_url() . 'school/add-school'); ?>
         <div class="form-group">
             <label for="school_name">School Name</label>
             <input type="text" class="form-control" id="school_name" aria-describedby="emailHelp" name="school_name"
@@ -40,7 +32,7 @@
                 <option value="Tigithi"> Tigithi </option>
             </select>
             <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
-
+</div>
 
         <div class="form-group">
             <label for="school_boys_number">Number of boys</label>
@@ -82,7 +74,7 @@
             <input type="text" class="form-control" id="school_location_name" aria-describedby="emailHelp"
                 name="school_location_name" placeholder="Location Description"
                 value="<?php echo set_value('school_location_name', $this->session->flashdata('form_inputs')['school_location_name']); ?>"
-                required>
+                >
             <small id="emailHelp" class="form-text text-muted"></small>
         </div>
 
@@ -91,7 +83,7 @@
             <input type="numeric" class="form-control" id="school_latitude" aria-describedby="emailHelp"
                 name="school_latitude" placeholder="Latitude"
                 value="<?php echo set_value('school_latitude', $this->session->flashdata('form_inputs')['school_latitude']); ?>"
-                required>
+                d>
             <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group">
@@ -99,7 +91,7 @@
             <input type="numeric" class="form-control" id="school_longitude" aria-describedby="emailHelp"
                 name="school_longitude" placeholder="Longitude"
                 value="<?php echo set_value('school_longitude', $this->session->flashdata('form_inputs')['school_longitude']); ?>"
-                required>
+             >
             <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group row">
@@ -120,11 +112,10 @@
 
         <div class="modal-footer">
             <div class="modal-footer">
-                <?php echo anchor('laikipiaschools/schools', '<i class="fas fa-times"></i>Cancel', ['class' => 'btn btn-secondary']); ?>
+                <?php echo anchor('school/schools', '<i class="fas fa-times"></i>Cancel', ['class' => 'btn btn-secondary']); ?>
             </div>
             <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save</button>
         </div>
         <?php echo form_close(); ?>
 
-    </div>
-</div>
+    
