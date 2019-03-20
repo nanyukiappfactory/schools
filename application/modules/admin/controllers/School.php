@@ -108,5 +108,4 @@ class School extends Admin
             }
         }
 
-    }
-}
+  }  }

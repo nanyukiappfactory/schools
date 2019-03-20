@@ -17,7 +17,6 @@ class Site_model extends CI_Model
 
         return $page_url;
     }
-
     public function decode_web_name($web_name)
     {
         // $field_name = str_replace("-", " ", $web_name);
