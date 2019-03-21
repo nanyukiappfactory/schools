@@ -72,4 +72,4 @@ $route['school/add-school'] = 'admin/school/add_school';
 $route['category/add-category'] = 'admin/category/add_category';
 $route['category/edit-category'] = 'admin/category/edit_category';
 $route['admin/category'] = 'admin/category/add_category';
-$route['categories/all-categories'] = 'admin/category/index';
+$route['admin/all_category'] = 'admin/category/index';
