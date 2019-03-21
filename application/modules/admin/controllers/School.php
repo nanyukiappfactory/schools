@@ -63,7 +63,7 @@ class School extends Admin
                         $this->session->set_flashdata('success', 'school Added successfully!!');
                         redirect('school/all-schools');
                     } else {
-                        $this->session->flashdata("error_message", "Unable to add  school");
+                        $this->session->flashdata("error", "Unable to add  school");
                     }
                 }
             } else {
@@ -97,5 +97,4 @@ class School extends Admin
         );
         $this->load->view("admin/layouts/layout", $data);
     }
-
 }

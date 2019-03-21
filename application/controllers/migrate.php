@@ -12,6 +12,8 @@ class Migrate extends CI_Controller
 
         if ($this->migration->current() === false) {
             show_error($this->migration->error_string());
+        } else {
+            echo "Migrations successful";
         }
     }
 }
