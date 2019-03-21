@@ -1,19 +1,21 @@
-<?php 
+<?php
 $alert = '';
 $error = $this->session->flashdata('error');
 $success = $this->session->flashdata('success');
-if (!empty($error)) 
-{
-    $alert =  '<div class="alert alert-danger">'. $error . '</div>' ; 
+if (!empty($error)) {
+    $alert = '<div class="alert alert-danger">' . $error . '</div>';
 }
-if (!empty($success)) 
-{
-    $alert = '<div class="alert alert-success"> '.$success.'</div>';
+if (!empty($success)) {
+    $alert = '<div class="alert alert-success"> ' . $success . '</div>';
 }
-$this->load->view('admin/layouts/header');
-
 ?>
- 
+
+<html>
+
+<head>
+    <?php $this->load->view('admin/layouts/header');?>
+</head>
+
 <body>
     
             <?php $this->load->view('admin/layouts/navigation');?>	
@@ -33,4 +35,5 @@ $this->load->view('admin/layouts/header');
     </main>
     
 </body>
+
 </html>

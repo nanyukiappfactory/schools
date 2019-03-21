@@ -38,7 +38,7 @@ class Migration_Add_category extends CI_Migration
         $this->dbforge->add_field("`deleted_on` timestamp NULL ");
         $this->dbforge->add_key('category_id', true);
         $this->dbforge->create_table('category');
-      }
+    }
     public function down()
     {
         $this->dbforge->drop_table('category');
