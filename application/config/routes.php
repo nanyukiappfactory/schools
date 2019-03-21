@@ -69,13 +69,7 @@ $route['school/add-school'] = 'admin/school/add_school';
 /**
  * Categories
  */
-<<<<<<< HEAD
-// $route['category/add-category'] = 'admin/category/add_category';
-// $route['admin/category'] = 'admin/category/add_category';
-// $route['admin/all_category'] = 'admin/category/index';
-=======
 $route['category/add-category'] = 'admin/category/add_category';
 $route['category/edit-category'] = 'admin/category/edit_category';
 $route['admin/category'] = 'admin/category/add_category';
-$route['admin/all_category'] = 'admin/category/index';
->>>>>>> cc10e667250f239892fd62510d8f92cc0caea7a7
+$route['categories/all-categories'] = 'admin/category/index';

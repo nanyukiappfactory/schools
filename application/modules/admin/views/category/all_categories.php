@@ -2,9 +2,7 @@
 if ($query->num_rows() > 0) {
     $count = 0;
     $counts = '';
-    $cat_name = '';
     $cat_parent = '';
-    $cat_status = '';
     $id = '';
     $tr_categories = '';
     $category_name = '';
@@ -34,7 +32,7 @@ if ($query->num_rows() > 0) {
         }
     }
 }
-echo anchor("category/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'");
+echo anchor("categories/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'");
 ?>
 <div class="card-body">
     <div class="table-responsive">
@@ -88,13 +86,13 @@ echo anchor("category/add-category/", "<i class='fas fa-edit'></i> Add Categoty"
                             <!--/.Content-->
                         </div>
                     </div>
-                    <?php echo anchor("category/edit-category/" . $id, "<i class='fas fa-edit'>Edit</i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
+                    <?php echo anchor("categories/edit-category/" . $id, "<i class='fas fa-edit'>Edit</i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
                     <?php if ($category_status == 1) {
-    echo anchor("administration/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-down'>Activate</i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
+    echo anchor("categories/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-down'>Activate</i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
 } else {
-    echo anchor("administration/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-up'>Deactivate</i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
+    echo anchor("categories/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-up'>Deactivate</i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
 }?>
-                    <?php echo anchor("administration/delete-category/" . $id, "<i class='fas fa-trash-alt'>Delete</i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
+                    <?php echo anchor("categories/delete-category/" . $id, "<i class='fas fa-trash-alt'>Delete</i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
                 </td>
             </tbody>
         </table>

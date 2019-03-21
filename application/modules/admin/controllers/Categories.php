@@ -70,7 +70,7 @@ class Category extends MX_Controller
             $category_id = $this->category_model->add_category();
             if ($category_id > 0) {
                 $this->session->set_flashdata("success", "New category ID" . $category_id . " has been added");
-                redirect('admin/all_category');
+                redirect('categories/all_categories');
             } else {
                 $this->session->set_flashdata("error", "unable to add category");
             }
@@ -98,7 +98,7 @@ class Category extends MX_Controller
         } else {
             $this->session->set_flashdata('error', "Category ID: " . $category_id . " failed to " . $message);
         }
-        redirect('admin/all_category');
+        redirect('categories/all_categories');
 
     }
 
