@@ -64,7 +64,7 @@ class Migration_Add_school extends CI_Migration
                 'constraint' => '100',
                 'null' => true,
             ),
-            'school_image_status' => array(
+            'school_status' => array(
                 'type' => 'TINYINT',
                 'constraint' => '1',
                 'null' => false,

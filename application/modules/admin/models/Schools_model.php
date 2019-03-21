@@ -25,4 +25,18 @@ public function add_school($file_name, $thumb_name)
             return false;
         }
     }
+
+    public function get_all_schools()
+    {
+    
+        $this->db->select("*");
+        $this->db->from('school');
+        return $this->db->get();
+
+    }
+    public function get_single_school($school_id)
+    {
+        $this->db->where("school_id", $school_id);
+        return $this->db->get("school");
+    }
 }

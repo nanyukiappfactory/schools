@@ -17,6 +17,7 @@ class Site_model extends CI_Model
 
         return $page_url;
     }
+
     public function decode_web_name($web_name)
     {
         // $field_name = str_replace("-", " ", $web_name);
@@ -25,4 +26,23 @@ class Site_model extends CI_Model
         return $field_name;
     }
 
+       
+    public function count_items($table, $where, $limit = null)
+    {
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+        $this->db->from($table);
+        $this->db->where($where);
+        return $this->db->count_all_results();
+    }
+    public function get_categories($table, $where, $limit, $start, $order, $order_method)
+    {
+        $this->db->select("*");
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->limit($limit, $start);
+        $this->db->order_by($order, $order_method);
+        return $this->db->get();
+    }
 }

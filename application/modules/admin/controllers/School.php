@@ -25,6 +25,23 @@ class School extends Admin
     }
     public function index()
     {
+        $query = $this->schools_model->get_all_schools();
+         //echo json_encode($query->result());die();
+        $v_data['query'] = $query;
+        //$v_data['other_images'] = ($this->schools_model->get_other_images());
+        $v_data['route'] = 'schools';
+                $data = array
+                (
+                    "title" => $this->site_model->display_page_title(),
+                // 'map' => $this->googlemaps->create_map(),
+                    "content" => $this->load->view("admin/all_schools",$v_data, true),
+                );
+                $this->load->view("layouts/layout", $data);
+    }
+
+
+    public function add_school()
+    {
          // This is our Google API key. You will need to change this for your own website
         // $map_config['apikey'] = 'AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E';
         // $map_config['center'] = '37.4419, -122.1419';
@@ -39,7 +56,6 @@ class School extends Admin
         $this->form_validation->set_rules("school_zone", "School Zone", "required");
         $this->form_validation->set_rules("school_latitude", "Latitude", "required");
         $this->form_validation->set_rules("school_longitude", "Longitude", "required");
-
         $form_errors = "";
         if ($this->form_validation->run()) 
         {
@@ -59,7 +75,7 @@ class School extends Admin
                 } else {
                     if ($this->schools_model->add_school($upload_response['file_name'], $upload_response['thumb_name'])) {
                         $this->session->set_flashdata('success', 'school Added successfully!!');
-                        redirect('school/schools');
+                        redirect('school/all-schools');
                     } else {
                         $this->session->flashdata("error", "Unable to add  school");
                     }
@@ -71,7 +87,7 @@ class School extends Admin
                 if ($this->schools_model->add_school(null, null)) 
                 {
                     $this->session->set_flashdata('success', 'school Added successfully!!');
-                    redirect('school/schools');
+                    redirect('school/all-schools');
                 } else 
                 {
                     $this->session->flashdata("error", "Unable to add  school");
@@ -102,9 +118,9 @@ class School extends Admin
                 (
                     "title" => $this->site_model->display_page_title(),
                    // 'map' => $this->googlemaps->create_map(),
-                    "content" => $this->load->view("admin/all_schools", true),
+                    "content" => $this->load->view("admin/add_school",null, true),
                 );
-                 $this->load->view("admin/layouts/layout", $data);
+                 $this->load->view("layouts/layout", $data);
             }
         }
 

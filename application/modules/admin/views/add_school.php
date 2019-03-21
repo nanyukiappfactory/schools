@@ -49,6 +49,15 @@
                 >
         </div>
 
+        <!-- <div class="ml-1 pb-3" style="font-size:20px;list-style-type:none;">
+            <li><b>School Status: </b> <br />
+                <?php if ($row->school_status == 1) {?>
+                <span class="badge badge-pill badge-success">Active</span>
+                <?php } else {?>
+                <span class="badge badge-pill badge-secondary">Inactive</span>
+                <?php }?>
+            </li>
+        </div> -->
         <div class="form-group">
             <label for="school_status">Status</label>
             <div class="col-sm-10 row">
@@ -100,6 +109,25 @@
                     Image</label>
                 <input type="file" id="school_image" name="school_image">
             </div>
+        </div>
+        <div class="form-group">
+            <label for="school_status">Status</label>
+            <div class="col-sm-10 row">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="school_status" id="school_status" value="1"
+                        checked>
+                    <Legend class="form-check-label" for="gridRadios1">
+                        Active
+                    </Legend>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="school_status" id="school_status" value="0">
+                    <Legend class="form-check-label" for="gridRadios2">
+                        Inactive
+                    </Legend>
+                </div>
+            </div>
+            <small id="emailHelp" class="form-text text-muted"></small>
         </div>
 
 

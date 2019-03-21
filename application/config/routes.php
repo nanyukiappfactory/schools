@@ -64,11 +64,11 @@ $route['admin/logout'] = 'admin/admin/admin_logout';
 
 $route['school/schools'] = 'admin/admin/index';
 $route['school/all-schools'] = 'admin/school/index';
-$route['school/add-school'] = 'admin/school/index';
+$route['school/add-school'] = 'admin/school/add_school';
 
 /**
  * Categories
  */
-$route['category/add-category'] = 'admin/category/add_category';
-$route['admin/category'] = 'admin/category/add_category';
-$route['admin/all_category'] = 'admin/category/index';
+// $route['category/add-category'] = 'admin/category/add_category';
+// $route['admin/category'] = 'admin/category/add_category';
+// $route['admin/all_category'] = 'admin/category/index';
