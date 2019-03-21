@@ -65,17 +65,14 @@ $route['admin/logout'] = 'admin/admin/admin_logout';
 $route['school/schools'] = 'admin/admin/index';
 $route['school/all-schools'] = 'admin/school/index';
 $route['school/add-school'] = 'admin/school/add_school';
+$route['school/edit-school/(:num)'] = 'admin/school/edit_school/$1';
+$route['school/deactivate-school/(:num)/(:num)'] = 'admin/school/deactivate_school/$1/$2';
+$route['schools/delete-school/(:num)'] = 'admin/school/delete_school/$1';
 
 /**
  * Categories
  */
-<<<<<<< HEAD
-// $route['category/add-category'] = 'admin/category/add_category';
-// $route['admin/category'] = 'admin/category/add_category';
-// $route['admin/all_category'] = 'admin/category/index';
-=======
 $route['category/add-category'] = 'admin/category/add_category';
 $route['category/edit-category'] = 'admin/category/edit_category';
 $route['admin/category'] = 'admin/category/add_category';
 $route['admin/all_category'] = 'admin/category/index';
->>>>>>> cc10e667250f239892fd62510d8f92cc0caea7a7
