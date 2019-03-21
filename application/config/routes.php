@@ -75,4 +75,8 @@ $route['schools/delete-school/(:num)'] = 'admin/school/delete_school/$1';
 $route['category/add-category'] = 'admin/category/add_category';
 $route['category/edit-category'] = 'admin/category/edit_category';
 $route['admin/category'] = 'admin/category/add_category';
+<<<<<<< HEAD
 $route['admin/all_category'] = 'admin/category/index';
+=======
+$route['admin/all_category'] = 'admin/category/index';
+>>>>>>> d82af86557822bdfc707bded61376709db1b15d1

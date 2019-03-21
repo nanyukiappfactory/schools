@@ -2,9 +2,7 @@
 if ($query->num_rows() > 0) {
     $count = 0;
     $counts = '';
-    $cat_name = '';
     $cat_parent = '';
-    $cat_status = '';
     $id = '';
     $tr_categories = '';
     $category_name = '';
@@ -34,70 +32,46 @@ if ($query->num_rows() > 0) {
         }
     }
 }
-echo anchor("category/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'");
 ?>
-<div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Parent</th>
-                    <th>Name</th>
-                    <th>Category Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Parent</th>
-                    <th>Name</th>
-                    <th>Category Status</th>
-                    <th>Actions</th>
-                </tr>
-            </tfoot>
-            <tbody>
-                <?php echo $tr_categories; ?>
-                <td>
-                    <a href="" class="btn btn-dark btn-sm" data-toggle="modal"
-                        data-target="#modalLoginAvatar<?php echo $id ?>"><i class="fas fa-eye">View</i></a>
-                    <div class="modal fade" id="modalLoginAvatar<?php echo $id ?>" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
-                            <!--Content-->
-                            <div class="modal-content" style="margin-left:0px;">
-                                <!--Body-->
-                                <div class="modal-body ">
-                                    <h5 class="pl-3 pb-3" style="font-size:20px;list-style-type:none;margin-left:10px;">
-                                        <b>Retrieved:</b> <?php echo $category_name; ?></h5>
-                                    <div class=" pl-3 pb-3"
-                                        style="font-size:20px;list-style-type:none;margin-left:10px;">
-                                        <li><b>Parent:</b>
-                                            <?php echo $cat_parent; ?>
-                                        </li>
-                                    </div>
-                                    <div class="pl-3" style="font-size:20px;list-style-type:none;margin-left:10px;">
-                                        <li><b>Name:</b> <?php echo $category_name; ?></li>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                            <!--/.Content-->
-                        </div>
-                    </div>
-                    <?php echo anchor("category/edit-category/" . $id, "<i class='fas fa-edit'>Edit</i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
-                    <?php if ($category_status == 1) {
-    echo anchor("administration/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-down'>Activate</i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
-} else {
-    echo anchor("administration/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-up'>Deactivate</i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
-}?>
-                    <?php echo anchor("administration/delete-category/" . $id, "<i class='fas fa-trash-alt'>Delete</i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
-                </td>
-            </tbody>
-        </table>
-        <?php echo $links; ?>
+
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads">
+    <div class="card-body">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <?php echo anchor("category/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Parent</th>
+                        <th>Name</th>
+                        <th>Category Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Parent</th>
+                        <th>Name</th>
+                        <th>Category Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php echo $tr_categories; ?>
+                    <td>
+
+                </tbody>
+            </table>
+            <?php echo $links; ?>
+        </div>
     </div>
 </div>

@@ -9,7 +9,6 @@ if (!empty($success)) {
     $alert = '<div class="alert alert-success"> ' . $success . '</div>';
 }
 ?>
-
 <html>
 
 <head>
@@ -17,29 +16,17 @@ if (!empty($success)) {
 </head>
 
 <body>
-      
-    
-            <?php $this->load->view('admin/layouts/navigation');?>
-            <div class="container-fluid">
-             <div class="row">	
-	
-            <?php $this->load->view('admin/layouts/sidenav');?> 
-             
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            
-                <?php
-                    echo $alert;
-                    
-                    echo $content;
-                ?>
-          
-    </main>
-</div>
-</div>
-
-
-<?php $this->load->view('admin/layouts/footer');?>
-    
+    <?php $this->load->view('admin/layouts/navigation');?>
+    <div class="container-fluid">
+        <div class="row">
+            <?php $this->load->view('admin/layouts/sidenav');?>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 mb-10">
+                <?php echo $alert; ?>
+                <?php echo $content; ?>
+            </main>
+        </div>
+    </div>
+    <?php $this->load->view('admin/layouts/footer');?>
 </body>
 
 </html>
