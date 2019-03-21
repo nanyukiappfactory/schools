@@ -83,4 +83,23 @@ class Category extends MX_Controller
         );
         $this->load->view("admin/layouts/layout", $data);
     }
+    public function deactivate_category($category_id, $status_id)
+    {
+        if ($status_id == 1) {
+            $new_category_status = 0;
+            $message = 'Deactivated';
+        } else {
+            $new_category_status = 1;
+            $message = 'Activated';
+        }
+        $result = $this->categories_model->change_status($category_id, $new_category_status);
+        if ($result == true) {
+            $this->session->set_flashdata('success', "Category ID: " . $category_id . " " . $message . " successfully!");
+        } else {
+            $this->session->set_flashdata('error', "Category ID: " . $category_id . " failed to " . $message);
+        }
+        redirect('admin/all_category');
+
+    }
+
 }

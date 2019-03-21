@@ -69,5 +69,6 @@ $route['school/all-schools'] = 'admin/school/index';
  * Categories
  */
 $route['category/add-category'] = 'admin/category/add_category';
+$route['category/edit-category'] = 'admin/category/edit_category';
 $route['admin/category'] = 'admin/category/add_category';
 $route['admin/all_category'] = 'admin/category/index';

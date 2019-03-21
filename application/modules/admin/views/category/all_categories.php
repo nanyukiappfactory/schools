@@ -5,20 +5,36 @@ if ($query->num_rows() > 0) {
     $cat_name = '';
     $cat_parent = '';
     $cat_status = '';
+    $id = '';
+    $tr_categories = '';
+    $category_name = '';
+    $category_status = '';
+
     foreach ($query->result() as $row) {
         $count++;
-        $counts .= '<td> ' . $count . ' </td>';
-        $cat_parent .= '<td> ' . $row->category_parent . ' </td>';
-        $cat_name .= '<td> ' . $row->category_name . ' </td>';
-        $cat_status .= '<td>'?><?php
-if ($row->category_status == 1) {?>
-<span class="badge badge-pill badge-success">Active</span>
-<?php } else {?>
-<span class="badge badge-pill badge-secondary">Inactive</span>
-<?php
+        if ($row->category_status == 1) {
+            $status = 'Active';
+        } else {
+            $status = 'Inactive';
+        }
+        $tr_categories .= '<tr>
+            <td> ' . $count . ' </td>
+            <td> ' . $row->category_parent . ' </td>
+            <td> ' . $row->category_name . ' </td>
+            <td><span class="badge badge-pill badge-success">' . $status . '</span></td>
+        </tr>';
+
+        $id .= $row->category_id;
+        $category_name .= $row->category_name;
+        $category_status .= $row->category_status;
+        if ($row->category_parent == 0) {
+        }
+        if ($id == $row->category_parent) {
+            $cat_parent = $row->category_name;
+        }
+    }
 }
-        '</td>';
-    }}
+echo anchor("category/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'");
 ?>
 <div class="card-body">
     <div class="table-responsive">
@@ -42,12 +58,44 @@ if ($row->category_status == 1) {?>
                 </tr>
             </tfoot>
             <tbody>
-                <tr>
-                    <?php echo $counts; ?>
-                    <?php echo $cat_parent; ?>
-                    <?php echo $cat_name; ?>
-                    <?php echo $cat_status; ?>
-                </tr>
+                <?php echo $tr_categories; ?>
+                <td>
+                    <a href="" class="btn btn-dark btn-sm" data-toggle="modal"
+                        data-target="#modalLoginAvatar<?php echo $id ?>"><i class="fas fa-eye">View</i></a>
+                    <div class="modal fade" id="modalLoginAvatar<?php echo $id ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+                            <!--Content-->
+                            <div class="modal-content" style="margin-left:0px;">
+                                <!--Body-->
+                                <div class="modal-body ">
+                                    <h5 class="pl-3 pb-3" style="font-size:20px;list-style-type:none;margin-left:10px;">
+                                        <b>Retrieved:</b> <?php echo $category_name; ?></h5>
+                                    <div class=" pl-3 pb-3"
+                                        style="font-size:20px;list-style-type:none;margin-left:10px;">
+                                        <li><b>Parent:</b>
+                                            <?php echo $cat_parent; ?>
+                                        </li>
+                                    </div>
+                                    <div class="pl-3" style="font-size:20px;list-style-type:none;margin-left:10px;">
+                                        <li><b>Name:</b> <?php echo $category_name; ?></li>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <?php echo anchor("category/edit-category/" . $id, "<i class='fas fa-edit'>Edit</i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
+                    <?php if ($category_status == 1) {
+    echo anchor("administration/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-down'>Activate</i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
+} else {
+    echo anchor("administration/deactivate-category/" . $id . "/" . $category_status, "<i class='far fa-thumbs-up'>Deactivate</i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
+}?>
+                    <?php echo anchor("administration/delete-category/" . $id, "<i class='fas fa-trash-alt'>Delete</i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
+                </td>
             </tbody>
         </table>
         <?php echo $links; ?>

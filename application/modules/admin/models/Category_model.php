@@ -25,6 +25,15 @@ class Category_model extends CI_Model
         $this->db->select("category_parent");
         $this->db->from("category");
         return $this->db->get();
-
+    }
+    public function change_status($category_id, $new_category_status)
+    {
+        $this->db->set('category_status', $new_category_status);
+        $this->db->where('category_id', $category_id);
+        if ($this->db->update('category')) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
