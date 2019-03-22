@@ -1,14 +1,8 @@
-<?php
-$cat_arr = array();
-foreach ($query->result() as $category) {
-    if (!in_array($category->category_parent, $cat_arr)) {
-        foreach ($query->result() as $cat) {
-            if ($category->category_parent == $cat->category_id) {
-                array_push($cat_arr, $category->category_parent);
-                $select .= '<option value=' . $cat->category_id . '> ' . $category->category_parent == $category_parent . '? "selected" : "";>
-    ' . $cat->category_name . '></option>';
-            }
-        }
+<?php if (is_array($categories->result())) {
+    $select = "";
+    foreach ($categories->result() as $cat) {
+        $select .= '<option value= ' . $cat->category_id . '> ' . $cat->category_name . '
+</option>';
     }
 }
 ?>
@@ -20,7 +14,9 @@ foreach ($query->result() as $category) {
         <?php echo form_open($this->uri->uri_string()); ?>
         <div class="form-group">
             <label for="category_parent">Parent</label>
-            <?php echo $select; ?>
+              <select id="inputState" class="form-control" name="category_parent">
+                <?php echo $select; ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="category_name">Name</label>

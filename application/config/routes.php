@@ -77,3 +77,12 @@ $route['category/add-category'] = 'admin/category/add_category';
 $route['category/edit-category'] = 'admin/category/edit_category';
 $route['admin/category'] = 'admin/category/add_category';
 $route['admin/all_category'] = 'admin/category/index';
+<<<<<<< HEAD
+=======
+$route['admin/category/(:any)/(:any)/(:num)'] = 'admin/category/index/$1/$2/$3';
+$route['admin/category/(:any)/(:any)'] = 'admin/category/index/$1/$2';
+$route['admin/deactivate-category/(:num)/(:num)'] = 'admin/category/deactivate_category/$1/$2';
+$route['categories/delete-category/(:num)'] = 'admin/category/delete_category/$1';
+$route['categories/search-categories'] = 'admin/category/search_categories';
+$route['categories/edit-category/(:num)'] = 'admin/category/edit_category/$1';
+>>>>>>> d5b61fd2146754da6dea7b464ee945dada0ea4f9
