@@ -1,4 +1,10 @@
-<?php echo form_open_multipart(base_url() . 'school/add-school'); ?>
+<?php echo form_open_multipart(base_url() . 'schools/add-school'); ?>
+<div class="card-header">
+		<h5 class="modal-title" id="exampleModalLabel">
+			  Add School Details
+    </h5>
+		
+</div>
 <div class="form-group">
     <label for="school_name">School Name</label>
     <input type="text" class="form-control" id="school_name" aria-describedby="emailHelp" name="school_name"
@@ -9,7 +15,7 @@
 <div class="form-group">
 	<label for="school_zone">Zone</label>
 	<select id="inputState" class="form-control" name="school_zone"
-		value="<?php echo set_value('school_zone', $this->session->flashdata('form_inputs')['school_zone']); ?>">
+	 value="<?php echo set_value('school_zone', $this->session->flashdata('form_inputs')['school_zone']); ?>">
 		<option selected>Choose your zone...</option>
 		<option value="Daiga">Daiga </option>
 		<option value="Gituamba"> Gituamba </option>
@@ -98,10 +104,11 @@
 </div>
 
 <div class="form-group">
-	<label for="school_write_up">School Write Up:</label>
-	<textarea class="editable" name="school_write_up" rows="5" id="editable" class="editable"
-		value="<?php echo set_value('school_write_up', $this->session->flashdata('form_inputs')['school_write_up']); ?>"></textarea>
+			<label for="school_write_up">School Write Up:</label>
+			<textarea class="editable" name="school_write_up"rows="5" id="editable" class="editable"
+			value="<?php echo set_value('school_write_up', $this->session->flashdata('form_inputs')['school_write_up']); ?>"></textarea>
 </div>
+
 
 <div class="modal-footer">
 	<div class="modal-footer">

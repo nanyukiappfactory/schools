@@ -15,9 +15,9 @@ class Admin extends MX_Controller
     }
     public function index()
     {
-        $newdata = $this->session->userdata($newdata);
-        $this->session->set_flashdata('success', 'Welcome back  ' . $newdata['first_name'] . 'Samuel ');
-        redirect('school/all-schools');
+        $data = $this->session->userdata($newdata);
+        $this->session->set_flashdata('success', 'Welcome back  ' . $data['first_name'] . '');
+        redirect('schools/all-schools');
     }
     public function admin_logout()
     {

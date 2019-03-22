@@ -1,35 +1,30 @@
 <?php
 if ($query->num_rows() > 0) {
     $count = 0;
-    $counts = '';
-    $cat_parent = '';
-    $id = '';
     $tr_categories = '';
-    $category_name = '';
-    $category_status = '';
 
     foreach ($query->result() as $row) {
         $count++;
         if ($row->category_status == 1) {
             $status = 'Active';
+
+            $status_anchor = anchor("categories/deactivate-category/" . $row->category_id . "/" . $row->category_status, "<i class='far fa-thumbs-down'>Activate</i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
         } else {
             $status = 'Inactive';
+
+            $status_anchor = anchor("categories/activate-category/" . $row->category_id . "/" . $row->category_status, "<i class='far fa-thumbs-up'>Deactivate</i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
         }
+
         $tr_categories .= '<tr>
             <td> ' . $count . ' </td>
             <td> ' . $row->category_parent . ' </td>
             <td> ' . $row->category_name . ' </td>
             <td><span class="badge badge-pill badge-success">' . $status . '</span></td>
+            <td>' . anchor("categories/edit-category/" . $row->category_id, "<i class='fas fa-edit'>Edit</i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'") .
+        $status_anchor .
+        anchor("categories/delete-category/" . $row->category_id, "<i class='fas fa-trash-alt'>Delete</i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")) .
+            '</td>
         </tr>';
-
-        $id .= $row->category_id;
-        $category_name .= $row->category_name;
-        $category_status .= $row->category_status;
-        if ($row->category_parent == 0) {
-        }
-        if ($id == $row->category_parent) {
-            $cat_parent = $row->category_name;
-        }
     }
 }
 ?>
@@ -67,7 +62,6 @@ if ($query->num_rows() > 0) {
                 </tfoot>
                 <tbody>
                     <?php echo $tr_categories; ?>
-                    <td>
 
                 </tbody>
             </table>

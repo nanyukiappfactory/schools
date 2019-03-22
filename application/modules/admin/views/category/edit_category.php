@@ -7,7 +7,10 @@ foreach ($query->result() as $category) {
                 array_push($cat_arr, $category->category_parent);
                 $select .= '<option value=' . $cat->category_id . '> ' . $category->category_parent == $category_parent . '? "selected" : "";>
     ' . $cat->category_name . '></option>';
-            }}}}
+            }
+        }
+    }
+}
 ?>
 <div class="container">
     <div class="card-header py-3">

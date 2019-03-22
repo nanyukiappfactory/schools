@@ -55,7 +55,6 @@ public function add_school($file_name, $thumb_name)
         $this->db->from('school_images');
         $this->db->join('school', 'school_images.school_id=school.school_id', 'left');
         return $this->db->get();
-
     }
     public function update_school($school_id, $file_name = false, $thumb_name = false)
     {
