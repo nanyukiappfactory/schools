@@ -14,7 +14,6 @@ if (!empty($success)) {
 <head>
     <?php $this->load->view('admin/layouts/header');?>
 </head>
-
 <body>
     <?php $this->load->view('admin/layouts/navigation');?>
     <div class="container-fluid">
