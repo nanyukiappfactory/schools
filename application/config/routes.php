@@ -69,13 +69,16 @@ $route['school/add-school'] = 'admin/school/add_school';
 /**
  * Categories
  */
-$route['category/add-category'] = 'admin/category/add_category';
-$route['category/edit-category'] = 'admin/category/edit_category';
-$route['admin/category'] = 'admin/category/add_category';
-$route['admin/all_category'] = 'admin/category/index';
-$route['admin/category/(:any)/(:any)/(:num)'] = 'admin/category/index/$1/$2/$3';
-$route['admin/category/(:any)/(:any)'] = 'admin/category/index/$1/$2';
-$route['admin/deactivate-category/(:num)/(:num)'] = 'admin/category/deactivate_category/$1/$2';
-$route['categories/delete-category/(:num)'] = 'admin/category/delete_category/$1';
-$route['categories/search-categories'] = 'admin/category/search_categories';
-$route['categories/edit-category/(:num)'] = 'admin/category/edit_category/$1';
+$route['categories/all-categories'] = 'admin/categories/index';
+$route['categories/all-categories/(:any)/(:any)'] = 'admin/categories/index/$1/$2';
+$route['categories/all-categories/(:any)/(:any)/(:num)'] = 'admin/categories/index/$1/$2/$3';
+$route['categories/add-category'] = 'admin/categories/add_category';
+$route['categories/edit-category'] = 'admin/categories/edit_category';
+$route['categories/deactivate-category/(:num)/(:num)'] = 'admin/categories/deactivate_category/$1/$2';
+$route['categories/delete-category/(:num)'] = 'admin/categories/delete_category/$1';
+$route['categories/edit-category/(:num)'] = 'admin/categories/edit_category/$1';
+// $route['categories/search-categories'] = 'admin/categories/search_categories';
+$route['categories/export-categories'] = 'admin/categories/export_categories';
+$route['categories/import-categories'] = 'admin/categories/import_categories';
+$route['categories/search-categories'] = 'admin/categories/search';
+$route['categories/close-search'] = 'admin/categories/close_search';

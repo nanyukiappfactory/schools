@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="modal-body">
-        <?php echo form_open_multipart(base_url() . 'admin/category'); ?>
+        <?php echo form_open_multipart(base_url() . 'categories/all-categories'); ?>
         <div class="form-group">
             <label for="category_Parent">Parent</label>
             <select id="inputState" class="form-control" name="category_parent">

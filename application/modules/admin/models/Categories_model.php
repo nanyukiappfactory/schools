@@ -1,5 +1,5 @@
 <?php
-class Category_model extends CI_Model
+class Categories_model extends CI_Model
 {
     public function add_category()
     {
@@ -37,6 +37,15 @@ class Category_model extends CI_Model
         $this->db->from("category");
         $this->db->distinct();
         return $this->db->get();
+    }
+
+    public function get_search() {
+        $match = $this->input->post('search');
+        $this->db->like('category_name',$match);
+        $this->db->or_like('category_parent',$match);
+        $this->db->or_like('category_id',$match);
+        $query = $this->db->get('category');
+        return $query;
     }
 
     public function change_status($category_id, $new_category_status)
@@ -89,4 +98,31 @@ class Category_model extends CI_Model
         }
 
     }
+    function import_record($record)
+        {
+          if(count($record) > 0){
+            
+            $this->db->select('*');
+            $this->db->where('category_name', $record[1]);
+            $q = $this->db->get('category');
+            $response = $q->result_array();
+       
+            // Insert record
+            if(count($response) == 0){
+              $newcategory = array(
+                "category_id" => trim($record[0]),
+                "category_name" => trim($record[1]),
+                "category_parent" => trim($record[2]),
+               
+              );
+              return $this->db->insert('category', $newcategory);
+            }
+            else
+            {
+                return FALSE;
+            }
+       
+          }
+       
+        }
 }

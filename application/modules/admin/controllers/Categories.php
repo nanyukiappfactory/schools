@@ -3,21 +3,22 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Category extends MX_Controller
+class Categories extends MX_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("admin/category_model");
+        $this->load->model("admin/categories_model");
         $this->load->model("admin/site_model");
     }
     public function index($order = 'category.category_name', $order_method = 'ASC')
     {
         $where = 'category_id > 0 AND deleted=0';
         $table = 'category';
+
         //pagination
         $segment = 5;
-        $config['base_url'] = site_url() . 'admin/category/' . $order . '/' . $order_method;
+        $config['base_url'] = site_url() . 'categories/all-categories/' . $order . '/' . $order_method;
         $config['total_rows'] = $this->site_model->count_items($table, $where);
         $config['uri_segment'] = $segment;
         $config['per_page'] = 4;
@@ -58,7 +59,6 @@ class Category extends MX_Controller
         $v_data['order_method'] = $order_method;
         $v_data['query'] = $query;
         $v_data['page'] = $page;
-        // var_dump($v_data['query']->result()); die();
 
         $data['content'] = $this->load->view('category/all_categories', $v_data, true);
         $this->load->view("admin/layouts/layout", $data);
@@ -71,11 +71,11 @@ class Category extends MX_Controller
 
         if ($this->form_validation->run()) 
         {
-            $category_id = $this->category_model->add_category();
+            $category_id = $this->categories_model->add_category();
             if ($category_id > 0)
-             {
+            {
                 $this->session->set_flashdata("success", "New category ID" . $category_id . " has been added");
-                redirect('admin/all_category');
+                redirect("categories/all-categories");
             }
              else 
             {
@@ -86,7 +86,7 @@ class Category extends MX_Controller
         $v_data['query'] = $query;
         $v_data['title'] = "Add Category";
         $data = array(
-            "content" => $this->load->view("category/add_category", $v_data, true),
+            "content" => $this->load->view("categories/add_category", $v_data, true),
         );
         $this->load->view("admin/layouts/layout", $data);
     }
@@ -102,7 +102,7 @@ class Category extends MX_Controller
             $new_category_status = 1;
             $message = 'Activated';
         }
-        $result = $this->category_model->change_status($category_id, $new_category_status);
+        $result = $this->categories_model->change_status($category_id, $new_category_status);
         if ($result == true)
          {
             $this->session->set_flashdata('success', "Category ID: " . $category_id . " " . $message . " successfully!");
@@ -111,19 +111,19 @@ class Category extends MX_Controller
         {
             $this->session->set_flashdata('error', "Category ID: " . $category_id . " failed to " . $message);
         }
-        redirect('admin/all_category');
+        redirect("categories/all-categories");
     }
     public function delete_category($category_id)
     {
-        if ($this->category_model->delete_category($category_id)) 
+        if ($this->categories_model->delete_category($category_id)) 
         {
             $this->session->set_flashdata('success', 'Deleted successfully');
-            redirect('admin/all_category');
+            redirect("categories/all-categories");
         } 
         else 
         {
             $this->session->set_flashdata('error', 'Unable to delete, Try again!!');
-            redirect('admin/all_category');
+            redirect("categories/all-categories");
         }
     }
     public function edit_category($category_id)
@@ -131,16 +131,16 @@ class Category extends MX_Controller
         $this->form_validation->set_rules("category_name", "Category Name", "required|is_unique[category.category_name]");
         if ($this->form_validation->run()) 
         {
-            $update_status = $this->category_model->update_category($category_id);
+            $update_status = $this->categories_model->update_category($category_id);
             if ($update_status) 
             {
                 $this->session->set_flashdata("success", "New category ID" . $category_id . " has been added");
-                redirect("admin/all_category");
+                redirect("categories/all-categories");
             }
         }
          else 
          {
-            $my_category = $this->category_model->get_single_category($category_id);
+            $my_category = $this->categories_model->get_single_category($category_id);
             if ($my_category->num_rows() > 0)
              {
                 $row = $my_category->row();
@@ -148,21 +148,35 @@ class Category extends MX_Controller
                 $category_name = $row->category_name;
                 $v_data["category_id"] = $category_id;
                 $v_data["category_name"] = $category_name;
-                $v_data['categories'] = $this->category_model->get_category_parents();
+                $v_data['categories'] = $this->categories_model->get_category_parents();
                 $v_data["category_parent"] = $category_parent;
                 $data = array("title" => $this->site_model->display_page_title(),
                     "content" => $this->load->view("category/edit_category", $v_data, true));
 
                 $this->load->view("admin/layouts/layout", $data);
-
             } 
             else 
                 {
                     $this->session->set_flashdata("error", "Unable to update  school");
-                    redirect("admin/all_category");
+                    redirect("categories/all-categories");
                 }
         }
     }
+    function search()
+    {
+        $v_data['query'] = $this->categories_model->get_search($table = 'category', $where = 'deleted != 1', null, null, $v_data['order'] = 'category_name',
+        $v_data["links"] = $this->pagination->create_links(),
+        $v_data['order_method'] = 'ASC');
+        
+        $data = array
+        (
+            "content" => $this->load->view("category/all_categories", $v_data, true),
+        );
+        $this->session->set_userdata('categories_search', $data);
+        
+        $this->load->view("admin/layouts/layout", $data);
+    }
+
     public function search_categories()
     {
         $category_parent = $this->input->post('search_param');
@@ -175,14 +189,97 @@ class Category extends MX_Controller
         $search = $category_parent;
         $this->session->set_userdata('categories_search', $search);
         $this->session->set_userdata('categories_search_title', $search_title);
-        redirect("admin/all_category");
+        redirect("categories/all-categories");
     }
 
     public function close_search()
     {
         $this->session->unset_userdata('categories_search');
-        $this->session->unset_userdata('categories_search_title');
-        $this->session->set_userdata("success_message", "Search has been closed");
-        redirect("admin/all_category");
+        $this->session->set_flashdata("success_message", "Search has been closed");
+        redirect("categories/all-categories");
+    }
+    public function export_categories()
+    {
+        $order = 'category.created_on';
+        $order_method = 'DESC';
+        $where = 'category_id > 0';
+        $table = 'category';
+        $categories_search = $this->session->userdata('categories_search');
+        $search_title = $this->session->userdata('categories_search_title');
+
+        if (!empty($categories_search) && $categories_search != null) {
+            $where .= $categories_search;
+        }
+        $title = 'categories';
+        if (!empty($search_title) && $search_title != null) {
+            $title = 'Categories filtered by ' . $search_title;
+        }
+
+        if ($this->site_model->export_results($table, $where, $order, $order_method, $title)) {
+        } else {
+            $this->session->set_userdata('error_message', "Unable to export results");
+        }
+
+    }
+    public function import_categories()
+    {
+        // Check form submit or not
+        if ($this->input->post('upload') != null) {
+            $data = array();
+            if (!empty($_FILES['file']['name'])) {
+                // Set preference
+                $config['upload_path'] = $this->upload_csv_path;
+                $config['allowed_types'] = 'csv';
+                $config['max_size'] = '1000'; // max_size in kb
+                $config['file_name'] = $_FILES['file']['name'];
+                // Load upload library
+                $this->load->library('upload', $config);
+                // File upload
+                if ($this->upload->do_upload('file')) {
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+
+                    // Reading file
+                    $file = fopen($this->upload_csv_path . '/' . $filename, "r");
+                    $i = 0;
+
+                    $importData_arr = array();
+
+                    while (($filedata = fgetcsv($file, 1000, ",")) !== false) {
+                        $num = count($filedata);
+
+                        for ($c = 0; $c < $num; $c++) {
+                            $importData_arr[$i][] = $filedata[$c];
+                        }
+                        $i++;
+                    }
+                    fclose($file);
+                    $skip = 0;
+                    // insert import data
+                    foreach ($importData_arr as $categorydata) 
+                    {
+                            if ($this->partners_model->import_record($categorydata) != false) {
+                                $this->session->set_flashdata("success", 'Bulk import successfully');
+                                redirect("categories/all-categories");
+                            } else {
+                                $this->session->set_flashdata("error", 'Unable to save bulk partners');
+                                redirect("categories/all-categories");
+                            }
+                        $skip++;
+                    }
+                } else {
+                    $this->session->set_flashdata("error", 'Failed to upload the file!!');
+                    redirect("categories/all-categories");
+                }
+            } else {
+                $this->session->set_flashdata("error", 'Failed to upload the file!!');
+                redirect("categories/all-categories");
+            }
+        } else {
+            $this->session->set_flashdata("error", 'File is required');
+            redirect("categories/all-categories");
+        }
+
     }
 }
