@@ -30,6 +30,7 @@ class Auth extends MX_Controller
                 $this->session->set_flashdata('error', 'Incorrect details, please try again');
             }
         }
+        
         $V_data['title'] = 'Admin Login';
         $data = array
             (
