@@ -107,108 +107,7 @@ class School extends Admin
         $this->load->view("admin/layouts/layout", $data);
     }
 
-<<<<<<< HEAD
-    public function edit_school($school_id)
-    {
-         $this->form_validation->set_rules("school_name", "School Name", "required");
-        $this->form_validation->set_rules("school_write_up", "school Write Up", "required");
-        $this->form_validation->set_rules("school_boys_number", "Number of Boys", "required");
-        $this->form_validation->set_rules("school_girls_number", "Number of Girls", "required");
-        $this->form_validation->set_rules("school_zone", "School Zone", "required");
-        $this->form_validation->set_rules("school_location_name", "Location", "required");
-        $this->form_validation->set_rules("school_latitude", "Latitude", "required");
-        $this->form_validation->set_rules("school_longitude", "Longitude", "required");
-        $form_errors = "";
-        if ($this->form_validation->run()) 
-        {
-            $resize = array
-                (
-                    "width" => 600,
-                    "height" => 600,
-                );
-            if (isset($_FILES['school_image']) && $_FILES['school_image']['size'] > 0)
-             {
-                $upload_response = $this->file_model->upload_image($this->upload_path, "school_image", $resize);
-                if ($upload_response['check'] == false) 
-                {
-                    $this->session->set_flashdata('error', $upload_response['message']);
-                } else
-                {
-                    if ($this->schools_model->update_school($school_id, $upload_response['file_name'], $upload_response['thumb_name'])) 
-                    {
-                        $this->session->set_flashdata('success', 'school updated successfully!!');
-                    } else
-                    {
-                        $this->session->flashdata("error_message", "Unable to update  school");
-                    }
-                }
-            } else
-            {
-                if ($this->schools_model->update_school($school_id))
-                {
-                    $this->session->set_flashdata('success', 'school updated successfully!!');
-                } else
-                {
-                    $this->session->flashdata("error", "Unable to update  school");
-                }
-            }
-        }
-         $query = $this->schools_model->get_single_school($school_id);
-        if ($query->num_rows() > 0) 
-        {
-            $row = $query->row();
-            $school = $row->school_id;
-            $v_data["query"] = $query;
-            $v_data["school_id"] = $school;
-            $v_data['schools'] = $this->schools_model->get_all_schools();
-            $data = array("title" => $this->site_model->display_page_title(),
-                  "content" => $this->load->view("admin/school/edit_school", $v_data, true));
-            $this->load->view("admin/layouts/layout", $data);
-
-        } else 
-        {
-            $this->session->set_flashdata("error", "Unable to update  school");
-            redirect("schools/schools");
-        }
-
-    }
-    public function deactivate_school($school_id, $status_id)
-    {
-        if ($status_id == 1)
-         {
-            $new_school_status = 0;
-            $message = 'Deactivated';
-         } else 
-         {
-            $new_school_status = 1;
-            $message = 'Activated';
-        }
-           $result = $this->schools_model->change_school_status($school_id, $new_school_status);
-        if ($result == true) 
-        {
-            $this->session->set_flashdata('success', "school ID: " . $school_id . " " . $message . " successfully!");
-        } else 
-        {
-            $this->session->set_flashdata('error', "school ID: " . $school_id . " failed to " . $message);
-        }
-
-        redirect('schools/all-schools');
-    }
-    public function delete_school($school_id)
-    {
-        if ($this->schools_model->delete_school($school_id))
-        {
-            $this->session->set_flashdata('success', 'Deleted successfully');
-            redirect('schools/all-schools');
-        } else 
-        {
-            $this->session->set_flashdata('error', 'Unable to delete, Try again!!');
-            redirect('schools/all-schools');
-        }
-    }
-=======
   
->>>>>>> 0f66713b3a69797a57b80623f3c16661f5ca0fcb
     public function view_school($school_id)
     {
         $query = $this->schools_model->get_single_school($school_id);
@@ -231,8 +130,4 @@ class School extends Admin
         redirect("schools/schools");
       }
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> 0f66713b3a69797a57b80623f3c16661f5ca0fcb
 }

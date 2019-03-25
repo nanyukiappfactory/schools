@@ -1,13 +1,12 @@
 <?php
+$tr_schools = '';
 if ($query->num_rows() > 0)
 {
     $count = 0;
 
-    $tr_schools = '';
-
     foreach ($query->result() as $row) 
     {
-        $id = $row->school_id; #
+        $id = $row->school_id; 
         $count++;
         $image = $row->school_image_name;
         if ($row->school_status == 1)

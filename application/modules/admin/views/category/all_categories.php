@@ -1,8 +1,9 @@
 <?php
+ $tr_categories = '';
 if ($query->num_rows() > 0) 
 {
     $count = 0;
-    $tr_categories = '';
+   
 $select = "";
     foreach ($query->result() as $row) 
     {
