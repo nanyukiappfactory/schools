@@ -19,7 +19,7 @@ class School extends Admin
         $this->load->model("site_model");
         $this->load->model("file_model");
     }
-    public function index($start = null)
+    public function index()
         {
             $query = $this->schools_model->get_all_schools();
             $data['title'] = 'Schools';
@@ -28,10 +28,9 @@ class School extends Admin
             $data = array(
                 "title" => $this->site_model->display_page_title(),
                 "content" => $this->load->view("admin/school/all_schools", $v_data, true),
-            );
+                        );
             $this->load->view("admin/layouts/layout", $data);
         }
-   
     public function add_school()
     {
         $this->form_validation->set_rules("school_name", "School Name", "required");
@@ -93,7 +92,7 @@ class School extends Admin
                     'school_zone' => $this->input->post('school_zone'),
                     'school_latitude' => $this->input->post('school_latitude'),
                     'school_longitude' => $this->input->post('school_longitude'),
-                    'school_write_up' => $this->input->post('school_write_up'),));
+                    'school_write_up' => $this->input->post('school_write_up')));
                 $this->session->set_flashdata("error", validation_errors());
                 redirect('schools/add-school');
             } 
@@ -102,12 +101,10 @@ class School extends Admin
         $data = array(
             "title" => $this->site_model->display_page_title(),
             "content" => $this->load->view("admin/school/add_school", $v_data, true)
-        );
-        
+                     );
         $this->load->view("admin/layouts/layout", $data);
     }
-
-  
+    
     public function view_school($school_id)
     {
         $query = $this->schools_model->get_single_school($school_id);
@@ -119,7 +116,6 @@ class School extends Admin
             $v_data["school_id"] = $school;
             $v_data['schools'] = $this->schools_model->get_all_schools();
             $v_data['pictures'] = $this->schools_model->get_images();
-            //echo json_encode($v_data['pictures']->result());die();
             $data = array(
                     "title" => $this->site_model->display_page_title(),
                     "content" => $this->load->view("admin/school/view_school", $v_data, true));
