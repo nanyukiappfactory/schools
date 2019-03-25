@@ -80,3 +80,33 @@ if ($query->num_rows() > 0)
 		</table>
 	</div>
 </div>
+<div class=" table-responsive">
+	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th> School Picture</th>
+				<th>School Name</th>
+				<th>Number of Boys</th>
+				<th>Number of Girls</th>
+				<th>Status</th>
+				<th colspan="4">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php echo $tr_schools; ?>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>#</th>
+				<th>School Picture</th>
+				<th>School Name</th>
+				<th>Number of Boys</th>
+				<th>Number of Girls</th>
+				<th>Status</th>
+				<th colspan="4">Actions</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+

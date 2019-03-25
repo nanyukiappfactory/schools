@@ -15,25 +15,23 @@ class School extends Admin
         //get the location to upload images
         $this->upload_location = base_url() . 'assets/uploads';
         $this->load->library("image_lib");
-        //$this->load->library('googlemaps');
         $this->load->model("schools_model");
         $this->load->model("site_model");
         $this->load->model("file_model");
     }
-    public function index()
-    {
-        $query = $this->schools_model->get_all_schools();
-        $v_data['pictures'] = $this->schools_model->get_images();
-        $v_data['query'] = $query;
-        $v_data['route'] = 'schools';
-        $data = array
-                    (
-                    "title" => $this->site_model->display_page_title(),
-                    "content" => $this->load->view("admin/school/all_schools", $v_data, true),
-                    );
-        $this->load->view("layouts/layout", $data);
-    }
-    
+    public function index($start = null)
+        {
+            $query = $this->schools_model->get_all_schools();
+            $data['title'] = 'Schools';
+            $v_data['query'] = $query;
+            $v_data['route'] = 'schools';
+            $data = array(
+                "title" => $this->site_model->display_page_title(),
+                "content" => $this->load->view("admin/school/all_schools", $v_data, true),
+            );
+            $this->load->view("admin/layouts/layout", $data);
+        }
+   
     public function add_school()
     {
         $this->form_validation->set_rules("school_name", "School Name", "required");
@@ -109,6 +107,7 @@ class School extends Admin
         $this->load->view("admin/layouts/layout", $data);
     }
 
+<<<<<<< HEAD
     public function edit_school($school_id)
     {
          $this->form_validation->set_rules("school_name", "School Name", "required");
@@ -207,6 +206,9 @@ class School extends Admin
             redirect('schools/all-schools');
         }
     }
+=======
+  
+>>>>>>> 0f66713b3a69797a57b80623f3c16661f5ca0fcb
     public function view_school($school_id)
     {
         $query = $this->schools_model->get_single_school($school_id);
@@ -229,5 +231,8 @@ class School extends Admin
         redirect("schools/schools");
       }
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 0f66713b3a69797a57b80623f3c16661f5ca0fcb
 }

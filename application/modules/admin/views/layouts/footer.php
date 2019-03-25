@@ -4,7 +4,6 @@ window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-
 </script>
 <script src="<?php echo base_url(); ?>assets/themes/custom/js/dashboard.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <!-- Configure tiny MCE Editor-->
 <script defer src="<?php echo base_url(); ?>assets/vendor/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendor/tinymce/js/tinymce/tinymce.min.js"></script>
