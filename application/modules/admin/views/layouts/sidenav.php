@@ -10,7 +10,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>admin/all_category">
+                        <a class="nav-link" href="<?php echo base_url(); ?>categories/all-categories">
                             <span data-feather="file"></span>
                             category
                         </a>
