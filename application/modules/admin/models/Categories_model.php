@@ -24,13 +24,6 @@ class Categories_model extends CI_Model
         return $this->db->get("category");
     }
 
-    public function fetch_all_categories()
-    {
-        $this->db->select("category_parent");
-        $this->db->from("category");
-        return $this->db->get();
-    }
-
     public function get_category_parents()
     {
         $this->db->select('*');

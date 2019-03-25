@@ -15,7 +15,7 @@ class Admin extends MX_Controller
     }
     public function index()
     {
-        $data = $this->session->userdata('login_status', $newdata);
+        $data = $this->session->userdata('login_status');
         $this->session->set_flashdata('success', 'Welcome back  ' . $data['first_name'] . '');
         redirect('schools/all-schools');
     }

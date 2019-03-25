@@ -59,7 +59,6 @@ class Categories extends MX_Controller
         $v_data['order_method'] = $order_method;
         $v_data['query'] = $query;
         $v_data['page'] = $page;
-
         $data['content'] = $this->load->view('category/all_categories', $v_data, true);
         $this->load->view("admin/layouts/layout", $data);
     }
@@ -77,9 +76,17 @@ class Categories extends MX_Controller
                 $this->session->set_flashdata("success", "New category ID" . $category_id . " has been added");
                 redirect("categories/all-categories");
             }
-             else 
+            else
             {
-                $this->session->set_flashdata("error", "unable to add category");
+                if (!empty(validation_errors())) 
+                {
+                    $this->session->set_flashdata("form_inputs", array(
+                        'category_name' => $this->input->post('category_name'),
+                        'category_parent' => $this->input->post('category_parent'),
+                    ));
+                    $this->session->set_flashdata("error", validation_errors());
+                    redirect("categories/all-categories");            
+                } 
             }
         }
         $query = $this->site_model->get_categories($table = 'category', $where = 'deleted != 1', null, null, $order = 'category_name', $order_method = 'ASC');
