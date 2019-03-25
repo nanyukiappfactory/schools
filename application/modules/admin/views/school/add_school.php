@@ -1,14 +1,10 @@
 <?php echo form_open_multipart(base_url() . 'schools/add-school'); ?>
-<div class="card-header">
+<div class="card-header"style="margin-top:20px;;margin-bottom:20px;">
 		<h5 class="modal-title" id="exampleModalLabel">
-			  Add School Details
+			  Add New School
     </h5>
 </div>
-<<<<<<< HEAD
 <div class="form-group ">
-=======
-<div class="form-group">
->>>>>>> 0c7f3b14b0ee692f8f919ce62a16461e8e6fbf80
     <label for="school_name">School Name</label>
     <input type="text" class="form-control" id="school_name" aria-describedby="emailHelp" name="school_name"
 		placeholder="School Name"
@@ -16,7 +12,7 @@
 </div>
 <div class="form-group">
 	<label for="school_zone">Zone</label>
-	<select id="inputState" class="form-control" name="school_zone" >
+	<select id="inputState" class="form-control" name="school_zone">
 		<option selected><?php echo set_value('school_zone',     $this->session->flashdata('form_inputs')['school_zone']); ?>
 		</option>
 		<option value="Daiga">Daiga </option>

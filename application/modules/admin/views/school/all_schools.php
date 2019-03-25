@@ -3,7 +3,6 @@ $tr_schools = '';
 if ($query->num_rows() > 0)
 {
     $count = 0;
-
     foreach ($query->result() as $row) 
     {
         $id = $row->school_id; 
@@ -42,21 +41,23 @@ if ($query->num_rows() > 0)
     <div class="card-body">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<?php echo anchor("schools/add-school", "Add School", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
+				<?php echo anchor("schools/add-school/", "<i class='fas fa-plus'></i> Add School", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
 			</div>
 		</div>
 	</div>
+    
 	<div class=" table-responsive">
 		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>#</th>
+				    <th>#</th>
 					<th> School Picture</th>
 					<th>School Name</th>
 					<th>Number of Boys</th>
 					<th>Number of Girls</th>
-					<th>Status</th>
-					<th colspan="4">Actions</th>
+                    <th>Status</th>
+                    <th colspan="4">Actions</th>
+					
 				</tr>
 			</thead>
 			<tbody>
