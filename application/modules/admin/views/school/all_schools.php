@@ -77,4 +77,4 @@ if ($query->num_rows() > 0)
 		</tfoot>
 	</table>
 </div>
-<?php echo $links; ?>
+

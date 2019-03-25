@@ -4,10 +4,6 @@ window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-
 </script>
 <script src="<?php echo base_url(); ?>assets/themes/custom/js/dashboard.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-<script><?php echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E">'; ?></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <!-- Configure tiny MCE Editor-->
 <script defer src="<?php echo base_url(); ?>assets/vendor/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendor/tinymce/js/tinymce/tinymce.min.js"></script>

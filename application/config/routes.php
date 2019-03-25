@@ -63,32 +63,12 @@ $route['admin/logout'] = 'admin/admin/admin_logout';
  */
 
 $route['schools/all-schools'] = 'admin/school/index';
-$route['schools/all-schools/(:any)'] = 'admin/school/index/$1';
-$route['schools/all-schools/(:any)/(:any)'] = 'admin/school/index/$1/$2';
-$route['schools/all-schools/(:any)/(:any)/(:num)'] = 'admin/school/index/$1/$2/$3';
 $route['schools/add-school'] = 'admin/school/add_school';
-$route['schools/edit-school/(:num)'] = 'admin/school/edit_school/$1';
-$route['schools/deactivate-school/(:num)/(:num)'] = 'admin/school/deactivate_school/$1/$2';
-$route['schools/delete-school/(:num)'] = 'admin/school/delete_school/$1';
-$route['schools/view-school/(:num)']= 'admin/school/view_school/$1';
-$route['schools/export-schools'] = 'admin/school/export_schools';
-$route['schools/import-schools'] = 'admin/school/import_schools';
+
 
 /**
  * Categories
  */
-<<<<<<< HEAD
-$route['category/add-category'] = 'admin/category/add_category';
-$route['category/edit-category'] = 'admin/category/edit_category';
-$route['admin/category'] = 'admin/category/add_category';
-$route['admin/all_category'] = 'admin/category/index';
-$route['admin/category/(:any)/(:any)/(:num)'] = 'admin/category/index/$1/$2/$3';
-$route['admin/category/(:any)/(:any)'] = 'admin/category/index/$1/$2';
-$route['admin/deactivate-category/(:num)/(:num)'] = 'admin/category/deactivate_category/$1/$2';
-$route['categories/delete-category/(:num)'] = 'admin/category/delete_category/$1';
-$route['categories/search-categories'] = 'admin/category/search_categories';
-$route['categories/edit-category/(:num)'] = 'admin/category/edit_category/$1';
-=======
 $route['categories/all-categories'] = 'admin/categories/index';
 $route['categories/all-categories/(:any)/(:any)'] = 'admin/categories/index/$1/$2';
 $route['categories/all-categories/(:any)/(:any)/(:num)'] = 'admin/categories/index/$1/$2/$3';
@@ -103,4 +83,3 @@ $route['categories/import-categories'] = 'admin/categories/import_categories';
 $route['categories/search-categories'] = 'admin/categories/search';
 $route['categories/close-search'] = 'admin/categories/close_search';
 
->>>>>>> 90d4c0c526d52216f4caef92f665c6f35404d110
