@@ -20,8 +20,7 @@ class Auth extends MX_Controller
             $user_password = md5($this->input->post('user_password'));
 
             if ($this->auth_model->validate_user($user_name, $user_password) == true) {
-                $this->session->set_flashdata('success', 'Welcome back ' . $first_name . '');
-                redirect('schools/all-schools');
+                redirect('admin');
             } else {
                 //3. Condition of validation rules failed
                 $this->session->set_flashdata("form_inputs", array(
