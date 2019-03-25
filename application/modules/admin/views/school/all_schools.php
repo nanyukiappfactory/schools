@@ -41,8 +41,8 @@ if ($query->num_rows() > 0)
     }
 }
 ?>
-<div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads" style="margin-top:500px;">
-	<div class="card-body">
+<div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads">
+    <div class="card-body">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<?php echo anchor("schools/add-school", "Add School", "class='btn btn-info btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
@@ -79,33 +79,5 @@ if ($query->num_rows() > 0)
 		</table>
 	</div>
 </div>
-<div class=" table-responsive">
-	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th> School Picture</th>
-				<th>School Name</th>
-				<th>Number of Boys</th>
-				<th>Number of Girls</th>
-				<th>Status</th>
-				<th colspan="4">Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php echo $tr_schools; ?>
-		</tbody>
-		<tfoot>
-			<tr>
-				<th>#</th>
-				<th>School Picture</th>
-				<th>School Name</th>
-				<th>Number of Boys</th>
-				<th>Number of Girls</th>
-				<th>Status</th>
-				<th colspan="4">Actions</th>
-			</tr>
-		</tfoot>
-	</table>
-</div>
+
 
