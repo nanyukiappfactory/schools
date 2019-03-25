@@ -25,33 +25,24 @@ public function add_school($file_name, $thumb_name)
             return false;
         }
     }
-    
-    public function paginate_schools($table, $where, $start, $limit, $page, $order, $order_method)
+
+    public function get_all_schools()
     {
+    
         $this->db->select("*");
-        $this->db->from($table);
-        $this->db->where($where);
-        $this->db->limit($limit, $start);
-        $this->db->order_by($order, $order_method);
+        $this->db->from('school');
         return $this->db->get();
+
     }
     public function change_school_status($school_id, $new_school_status)
     {
         $this->db->set('school_status', $new_school_status);
         $this->db->where('school_id', $school_id);
-        if ($this->db->update('school')) 
-        {
+        if ($this->db->update('school')) {
             return true;
-        } else 
-        {
+        } else {
             return false;
         }
-    }
-    public function get_all_schools()
-    {
-        $this->db->select("*");
-        $this->db->from('school');
-        return $this->db->get();
     }
     public function get_single_school($school_id)
     {
@@ -107,40 +98,5 @@ public function add_school($file_name, $thumb_name)
             return false;
         }
     }
-    function import_record($record)
-        {
-            // echo json_encode($record);die();
-          if(count($record) > 0)
-          {
-            // Check partner
-            $this->db->select('*');
-            $this->db->where('school_name', $record[1]);
-            $q = $this->db->get('school');
-            $response = $q->result_array();
-            // Insert record
-            if(count($response) == 0)
-            {
-              $newschool = array
-              (
-                "school_name" => trim($record[0]),
-                "school_zone" => trim($record[1]),
-                "school_latitude" => trim($record[2]),
-                "school_longitude" => trim($record[3]),
-                "school_location_name" => trim($record[4]),
-                "school_girls_number" => trim($record[5]),
-                "school_boys_number" => trim($record[6]),
-                "school_write_up" => trim($record[7]),
-                 );
-              return $this->db->insert('school', $newschool);
-            }
-            else
-            {
-                return FALSE;
-            }
-       
-          }
-       
-        }
-      
     
 }

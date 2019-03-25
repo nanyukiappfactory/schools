@@ -1,12 +1,11 @@
 <?php echo form_open_multipart(base_url() . 'schools/add-school'); ?>
-<div class="card-header" style="margin-top:30px;margin-bottom:30px">
+<div class="card-header">
 		<h5 class="modal-title" id="exampleModalLabel">
 			  Add School Details
     </h5>
 		
 </div>
-
-<div class="form-group ">
+<div class="form-group">
     <label for="school_name">School Name</label>
     <input type="text" class="form-control" id="school_name" aria-describedby="emailHelp" name="school_name"
 		placeholder="School Name"
@@ -72,6 +71,7 @@
 	</div>
 	<small id="emailHelp" class="form-text text-muted"></small>
 </div>
+
 <div class="form-group">
 	<label for="school_location_name">Location Description</label>
 	<input type="text" class="form-control" id="school_location_name" aria-describedby="emailHelp"
@@ -79,11 +79,13 @@
 		value="<?php echo set_value('school_location_name', $this->session->flashdata('form_inputs')['school_location_name']); ?>">
 	<small id="emailHelp" class="form-text text-muted"></small>
 </div>
+
 <div class="form-group">
 	<label for="school_latitude">Latitude</label>
 	<input type="numeric" class="form-control" id="school_latitude" aria-describedby="emailHelp" name="school_latitude"
 		placeholder="Latitude"
-		value="<?php echo set_value('school_latitude', $this->session->flashdata('form_inputs')['school_latitude']); ?>">
+		value="<?php echo set_value('school_latitude', $this->session->flashdata('form_inputs')['school_latitude']); ?>"
+		d>
 	<small id="emailHelp" class="form-text text-muted"></small>
 </div>
 <div class="form-group">
@@ -110,7 +112,7 @@
 
 <div class="modal-footer">
 	<div class="modal-footer">
-		<?php echo anchor('schools/all-schools', '<i class="fas fa-times"></i>Cancel', ['class' => 'btn btn-secondary']); ?>
+		<?php echo anchor('school/schools', '<i class="fas fa-times"></i>Cancel', ['class' => 'btn btn-secondary']); ?>
 	</div>
 	<button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save</button>
 </div>

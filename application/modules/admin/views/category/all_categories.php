@@ -10,6 +10,7 @@ $select = "";
         if ($row->category_status == 1) 
         {
             $status = '<i class="badge badge-pill badge-success">Active</i>';
+            
             $status_anchor = anchor("categories/deactivate-category/" . $row->category_id . "/" . $row->category_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-default btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
         } 
         else 
@@ -23,13 +24,15 @@ $select = "";
             <td> ' . $row->category_parent . ' </td>
             <td> ' . $row->category_name . ' </td>
             <td>' . $status . '</span></td>
-            <td>' . anchor("categories/edit-category/" . $row->category_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'") .
-        $status_anchor .
-        anchor("categories/delete-category/" . $row->category_id, "<i class='fas fa-trash-alt'></i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")) .
-            '</td>
-        </tr>';
-          $select .= '<option value= ' . $row->category_id . '> ' . $row->category_name . '
-        </option>';
+            <td>' .
+            anchor("admin/categories/view_category/" . $row->category_id, "<i class='fas fa-eye'></i>", "class='btn btn-success btn-sm p-left-10'", "style='padding-left:10px;'","data-toggle='modal'","data-target='#modalQuickView'","data-toggle='modal'") . " " . 
+            anchor("categories/edit-category/" . $row->category_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'") . 
+            $status_anchor .
+            anchor("categories/delete-category/" . $row->category_id, "<i class='fas fa-trash-alt'></i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")) .
+                '</td>
+            </tr>';
+            $select .= '<option value= ' . $row->category_id . '> ' . $row->category_name . '
+            </option>';
     }
 }
 ?>
@@ -38,48 +41,12 @@ $select = "";
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <div class = "row"> 
-                <div>
-                <?php echo anchor("categories/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10 m-2'", "style='padding-left:10px;'"); ?>
-                &nbsp;&nbsp;
-                </div>
-                <div>
-                    <label class="sr-only" for="search">Search</label>
-                    <div class="input-group">
-                        <?php echo form_open(base_url() . 'categories/search-categories', array("class" => "form-inline  my-lg-0")) ?>
-                        <select class="custom-select2 form-control mr-2 m-1" name="search">
-                            <option value="">Choose ..</option>
-                            <?php echo $select ?>
-                        </select>&nbsp;&nbsp;
+                <div class = "row"> 
+                    <div>
+                    <?php echo anchor("categories/add-category/", "<i class='fas fa-edit'></i> Add Categoty", "class='btn btn-info btn-sm p-left-10 m-2'", "style='padding-left:10px;'"); ?>
+                    &nbsp;&nbsp;
                     </div>
-                </div>
-                <div class="active-cyan-3 active-cyan-4 m-1">
-                    <input class="form-control" type="text" placeholder="Search" name="search" aria-label="Search">
-                </div>
-                &nbsp;&nbsp;&nbsp;
-                <div>
-                <button class="btn btn-outline-primary mt-2" type="submit"><i class="fas fa-search"></i></button>
-                </div> 
-                <div>
-                    <?php echo form_close();
-                        // Close search
-                        if ($this->session->userdata('categories_search')) 
-                            { 
-                            ?>
-                            <a class="btn btn-outline-primary btn-sm m-1" href="<?php echo base_url() . 'categories/' . '/close-search'; ?>">Close Search</a>     
-                    <?php
-                   }?>
-                </div>
-                <div>
-                <a href="<?php echo site_url() . "categories/export-categories" ?>" target="_blank"
-                    class="btn btn-default pull-right m-1"><i class="fas fa-file-export"></i> Export</a></div>
-                 <div>
-                 <?php echo form_open_multipart(base_url() . 'categories/import-categories');?>
-                    <input type='file' name='file'>
-                    <input type='submit' name='upload'>
-                <?php form_close();?>
-               </div>
-                    </div> 
+                    
                 </div> 
             </div>
         </div>
@@ -113,6 +80,6 @@ $select = "";
                     <?php echo $tr_categories; ?>
                 </tbody>
             </table>
-            <?php echo $links; ?>
+            <!-- <?php echo $links; ?> -->
         </div>
 </div>

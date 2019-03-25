@@ -29,8 +29,7 @@ class Site_model extends CI_Model
        
     public function count_items($table, $where, $limit = null)
     {
-        if ($limit != null) 
-        {
+        if ($limit != null) {
             $this->db->limit($limit);
         }
         $this->db->from($table);
