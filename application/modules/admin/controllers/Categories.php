@@ -86,7 +86,7 @@ class Categories extends MX_Controller
         $v_data['query'] = $query;
         $v_data['title'] = "Add Category";
         $data = array(
-            "content" => $this->load->view("categories/add_category", $v_data, true),
+            "content" => $this->load->view("category/add_category", $v_data, true),
         );
         $this->load->view("admin/layouts/layout", $data);
     }
