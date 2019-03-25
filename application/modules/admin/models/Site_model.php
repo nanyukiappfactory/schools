@@ -29,7 +29,8 @@ class Site_model extends CI_Model
        
     public function count_items($table, $where, $limit = null)
     {
-        if ($limit != null) {
+        if ($limit != null) 
+        {
             $this->db->limit($limit);
         }
         $this->db->from($table);
@@ -44,5 +45,26 @@ class Site_model extends CI_Model
         $this->db->limit($limit, $start);
         $this->db->order_by($order, $order_method);
         return $this->db->get();
+    }
+    public function export_results($table, $where, $order, $order_method, $title)
+    {
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->order_by($order, $order_method);
+        $query = $this->db->get();
+
+        $delimiter = ",";
+        $newline = "\r\n";
+        $data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+        $res = force_download(date("Y-m-d H:i:s") . $title . '.csv', $data);
+        if ($res) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
