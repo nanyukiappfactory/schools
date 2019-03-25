@@ -38,7 +38,7 @@
 </div>
 <div class="form-group">
 	<label for="school_boys_number">Number of boys</label>
-	<input type="number" class="form-control" id="school_boys_number"      aria-describedby="emailHelp"name="school_boys_number"
+	<input type="number" class="form-control" id="school_boys_number" aria-describedby="emailHelp"name="school_boys_number"
 		value="<?php echo set_value('school_boys_number', $this->session->flashdata('form_inputs')['school_boys_number']); ?>"
 		placeholder="Number of Boys">
 </div>
