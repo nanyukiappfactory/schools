@@ -56,7 +56,7 @@ class School extends Admin
                     if ($upload_response['check'] == false)
                     {
                         $this->session->set_flashdata('error', $upload_response['message']);
-                        redirect('schools/all-schools');
+                        redirect('schools/schools');
                     }  else
                     {
                         if ($this->schools_model->add_school($upload_response['file_name'], $upload_response['thumb_name']))
@@ -123,7 +123,7 @@ class School extends Admin
         } else
       {
         $this->session->set_flashdata("error","could not find your school");
-        redirect("schools/all-schools");
+        redirect("schools/schools");
       }
     }
 }

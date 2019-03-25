@@ -28,11 +28,9 @@ public function change_school_status($school_id, $new_school_status)
     {
         $this->db->set('school_status', $new_school_status);
         $this->db->where('school_id', $school_id);
-        if ($this->db->update('school')) 
-        {
+        if ($this->db->update('school')) {
             return true;
-        } else 
-        {
+        } else {
             return false;
         }
     }

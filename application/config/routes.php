@@ -73,6 +73,7 @@ $route['categories/all-categories'] = 'admin/categories/index';
 $route['categories/all-categories/(:any)/(:any)'] = 'admin/categories/index/$1/$2';
 $route['categories/all-categories/(:any)/(:any)/(:num)'] = 'admin/categories/index/$1/$2/$3';
 $route['categories/add-category'] = 'admin/categories/add_category';
+<<<<<<< HEAD
 $route['categories/edit-category'] = 'admin/categories/edit_category';
 $route['categories/deactivate-category/(:num)/(:num)'] = 'admin/categories/deactivate_category/$1/$2';
 $route['categories/delete-category/(:num)'] = 'admin/categories/delete_category/$1';
@@ -81,4 +82,6 @@ $route['categories/export-categories'] = 'admin/categories/export_categories';
 $route['categories/import-categories'] = 'admin/categories/import_categories';
 $route['categories/search-categories'] = 'admin/categories/search';
 $route['categories/close-search'] = 'admin/categories/close_search';
+=======
+>>>>>>> 0c7f3b14b0ee692f8f919ce62a16461e8e6fbf80
 
