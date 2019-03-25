@@ -12,12 +12,10 @@ if ($query->num_rows() > 0)
         if ($row->school_status == 1)
          {
             $status = 'Active';
-
             $status_anchor = anchor("schools/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
          } else 
          {
             $status = 'Inactive';
-
             $status_anchor = anchor("schools/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
          }
 
@@ -39,8 +37,7 @@ if ($query->num_rows() > 0)
             '</td>
         </tr>';
     }
-}
-?>
+}?>
 <div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads">
     <div class="card-body">
 		<div class="card shadow mb-4">
