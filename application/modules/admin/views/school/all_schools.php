@@ -28,6 +28,10 @@ if ($query->num_rows() > 0)
             <td>
                 <span class="badge badge-pill badge-success">' . $status . '</span>
             </td>
+            <td> ' . $row->created_on . ' </td>
+            <td> ' . $row->created_by . ' </td>
+            <td> ' . $row->modified_on . ' </td>
+            <td> ' . $row->modified_by . ' </td>
             <td>' .
                 anchor("schools/view-school/" . $row->school_id, "<i class='fas fa-eye'></i>", "class='btn btn-success btn-sm p-left-10'", "style='padding-left:10px;'","data-toggle='modal'","data-target='#modalQuickView'","data-toggle='modal'") . " " .
                 anchor("schools/edit-school/" . $row->school_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'") . " " .
@@ -45,7 +49,6 @@ if ($query->num_rows() > 0)
 			</div>
 		</div>
 	</div>
-    
 	<div class=" table-responsive">
 		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 			<thead>
@@ -56,8 +59,11 @@ if ($query->num_rows() > 0)
 					<th>Number of Boys</th>
 					<th>Number of Girls</th>
                     <th>Status</th>
+					<th>Created</th>
+                    <th>Created By</th>
+                    <th>Last Modified</th>
+                    <th>Modified By</th>
                     <th colspan="4">Actions</th>
-					
 				</tr>
 			</thead>
 			<tbody>

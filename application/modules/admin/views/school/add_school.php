@@ -95,6 +95,12 @@
 		<input type="file" id="school_image" name="school_image">
 	</div>
 </div>
+<div class="form-group row">
+	<div class="col-sm-12 col-md-12">
+		<label for="other_images">Other Images</label>
+		<input type="file" name="files[]" multiple/>
+	</div>
+</div>
 <div class="form-group">
 			<label for="school_write_up">School Write Up</label>
 			<textarea class="editable" name="school_write_up"rows="5" id="editable" class="editable"
