@@ -18,7 +18,7 @@ if (!empty($success)) {
     <?php $this->load->view('admin/layouts/navigation');?>
     <div class="container-fluid">
         <div class="row">
-        <!-- <?php $this->load->view('admin/layouts/sidenav');?> -->
+        <?php $this->load->view('admin/layouts/sidenav');?>
         
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
                 <?php echo $alert; ?>

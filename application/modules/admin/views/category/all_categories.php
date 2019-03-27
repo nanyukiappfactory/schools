@@ -4,7 +4,8 @@ if ($query->num_rows() > 0)
 {
     $count = 0;
    
-$select = "";
+    $select = "";
+
     foreach ($query->result() as $row) 
     {
         $count++;
@@ -20,6 +21,7 @@ $select = "";
 
             $status_anchor = anchor("categories/deactivate-category/" . $row->category_id . "/" . $row->category_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
         }
+        
         $tr_categories .= '<tr>
             <td> ' . $count . ' </td>
             <td> ' . $row->category_parent . ' </td>

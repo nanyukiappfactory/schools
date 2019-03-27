@@ -63,8 +63,8 @@ $route['admin/logout'] = 'admin/admin/admin_logout';
  * Admin
  */
 
-$route['schools/all-schools'] = 'admin/school/index';
-$route['schools/add-school'] = 'admin/school/add_school';
+$route['schools/all-schools'] = 'admin/schools/index';
+$route['schools/add-school'] = 'admin/schools/add_school';
 
 
 /**
